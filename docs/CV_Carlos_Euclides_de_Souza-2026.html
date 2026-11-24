@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Currículo — Carlos Euclides</title>
+    <style>
+      @page { size: A4; margin: 0; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: #15243c;
+        background: #e8eef7;
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        overflow: hidden;
+        background: #fff;
+      }
+      .page::after {
+        position: absolute;
+        right: -32mm;
+        top: -30mm;
+        width: 90mm;
+        height: 90mm;
+        border: 1px solid rgba(52, 211, 235, .24);
+        border-radius: 50%;
+        content: "";
+      }
+      .masthead {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 20mm;
+        padding: 14mm 15mm 12mm;
+        color: #fff;
+        background: #071a36;
+      }
+      .masthead::before {
+        position: absolute;
+        inset: 0;
+        opacity: .13;
+        background-image:
+          linear-gradient(rgba(255,255,255,.25) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.25) 1px, transparent 1px);
+        background-size: 8mm 8mm;
+        content: "";
+      }
+      .identity, .contact { position: relative; z-index: 1; }
+      .kicker {
+        margin: 0 0 4mm;
+        color: #34d3eb;
+        font-size: 7.5pt;
+        font-weight: 700;
+        letter-spacing: 1.8pt;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0;
+        font-size: 29pt;
+        line-height: .98;
+        letter-spacing: -1.3pt;
+      }
+      .title {
+        margin: 4mm 0 0;
+        color: #b9c8dd;
+        font-size: 10pt;
+        font-weight: 400;
+      }
+      .contact {
+        align-self: end;
+        font-size: 8pt;
+        line-height: 1.8;
+        text-align: right;
+      }
+      .contact a { color: #fff; text-decoration: none; }
+      .layout {
+        display: grid;
+        grid-template-columns: 55mm 1fr;
+        height: 244mm;
+      }
+      aside {
+        padding: 10mm 7mm 9mm 12mm;
+        color: #d8e5f6;
+        background: #0c264c;
+      }
+      main { padding: 10mm 13mm 8mm 10mm; }
+      section + section { margin-top: 6mm; }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        margin: 0 0 3.5mm;
+        color: #0b2b58;
+        font-size: 8.2pt;
+        font-weight: 800;
+        letter-spacing: 1.2pt;
+        text-transform: uppercase;
+      }
+      .section-title::before {
+        width: 7mm;
+        height: 2px;
+        background: #11bcd4;
+        content: "";
+      }
+      aside .section-title { color: #fff; }
+      aside .section-title::before { background: #34d3eb; }
+      p { margin: 0; font-size: 8.3pt; line-height: 1.48; }
+      .summary { color: #42526a; font-size: 9pt; line-height: 1.58; }
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6mm;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .skill-list li {
+        padding: 1.5mm 2mm;
+        border: 1px solid rgba(255,255,255,.18);
+        border-radius: 1.3mm;
+        color: #eaf3ff;
+        font-size: 7pt;
+        line-height: 1;
+      }
+      .side-copy { color: #b9c9dd; font-size: 7.6pt; line-height: 1.55; }
+      .education-item + .education-item { margin-top: 3.5mm; }
+      .education-item strong {
+        display: block;
+        margin-bottom: 1.4mm;
+        color: #fff;
+        font-size: 7.7pt;
+        line-height: 1.35;
+      }
+      .education-item span { color: #8fa7c4; font-size: 7pt; line-height: 1.4; }
+      .job {
+        display: grid;
+        grid-template-columns: 27mm 1fr;
+        gap: 4mm;
+        padding: 0 0 4mm;
+        border-bottom: 1px solid #dce5f1;
+      }
+      .job + .job { margin-top: 4mm; }
+      .job:last-child { padding-bottom: 0; border-bottom: 0; }
+      .date {
+        padding-top: .8mm;
+        color: #63809e;
+        font-size: 7.3pt;
+        font-weight: 700;
+        letter-spacing: .3pt;
+        text-transform: uppercase;
+      }
+      .job h3 {
+        margin: 0;
+        color: #0b2b58;
+        font-size: 10.2pt;
+        line-height: 1.25;
+      }
+      .company {
+        margin: 1mm 0 2.5mm;
+        color: #0ba8c0;
+        font-size: 7.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .job ul {
+        margin: 0;
+        padding-left: 4mm;
+        color: #42526a;
+      }
+      .job li { margin-bottom: .8mm; font-size: 7.5pt; line-height: 1.35; }
+      .compact-jobs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2mm 4mm;
+      }
+      .compact-job {
+        padding: 2mm;
+        border-left: 2px solid #25c4db;
+        background: #f1f6fb;
+      }
+      .compact-job strong {
+        display: block;
+        color: #17365e;
+        font-size: 7.7pt;
+        line-height: 1.35;
+      }
+      .compact-job span { color: #6b7e95; font-size: 6.9pt; }
+      .page-number {
+        position: absolute;
+        right: 8mm;
+        bottom: 6mm;
+        color: #7890aa;
+        font-size: 6.5pt;
+        letter-spacing: .8pt;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="page">
+      <header class="masthead">
+        <div class="identity">
+          <p class="kicker">Currículo profissional</p>
+          <h1>Carlos Euclides</h1>
+          <p class="title">Business Intelligence · Análise de Dados · Indicadores e Processos</p>
+        </div>
+        <div class="contact">
+          Natal, RN<br />
+          <a href="mailto:dev.carlos.euclides@gmail.com">dev.carlos.euclides@gmail.com</a><br />
+          <a href="tel:+5584988618300">84 9 8861-8300</a> ·
+          <a href="tel:+5584987690845">84 9 8769-0845</a><br />
+          <a href="https://linkedin.com/in/carlos-euclides-b566515a">linkedin.com/in/carlos-euclides-b566515a</a>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside>
+          <section>
+            <h2 class="section-title">Competências</h2>
+            <ul class="skill-list">
+              <li>Power BI</li><li>DAX</li><li>Power Query</li><li>SQL</li>
+              <li>Excel & VBA</li><li>Modelagem dimensional</li><li>KPIs</li>
+              <li>Dashboards</li><li>SAP MM/WM</li><li>ERP</li>
+              <li>Supply Chain</li><li>Automação</li>
+            </ul>
+          </section>
+          <section>
+            <h2 class="section-title">Formação</h2>
+            <div class="education-item">
+              <strong>Tecnologia em Análise e Desenvolvimento de Sistemas</strong>
+              <span>Senac RN · 2026–2028<br />Em andamento</span>
+            </div>
+            <div class="education-item">
+              <strong>MBA Executivo em Gerenciamento de Projetos</strong>
+              <span>Faculdade Iguaçu · 2025–2027<br />Em andamento</span>
+            </div>
+            <div class="education-item">
+              <strong>Pós em Planejamento, Finanças e Orçamento Público</strong>
+              <span>Faculdade Iguaçu · 2025–2026</span>
+            </div>
+            <div class="education-item">
+              <strong>Bacharelado em Ciências Contábeis</strong>
+              <span>Universidade Potiguar · 2014–2018</span>
+            </div>
+          </section>
+          <section>
+            <h2 class="section-title">Cursos</h2>
+            <p class="side-copy">Power BI · Excel e VBA · Python para Data Science · Gestão e Aplicações SAP · Estatística</p>
+          </section>
+        </aside>
+
+        <main>
+          <section>
+            <h2 class="section-title">Perfil</h2>
+            <p class="summary">
+              Profissional com mais de 15 anos em ambientes corporativos, varejo, operações,
+              orçamento, administração e tecnologia, com atuação em Business Intelligence desde
+              2022. Conecta necessidades do negócio a dados, indicadores, relatórios e dashboards,
+              aliando visão analítica à compreensão prática dos processos que originam os dados.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="section-title">Experiência</h2>
+            <article class="job">
+              <div class="date">Jun 2022<br />NOV 2026</div>
+              <div>
+                <h3>Analista de Business Intelligence</h3>
+                <p class="company">Senac RN</p>
+                <ul>
+                  <li>Desenvolvimento de soluções de BI de ponta a ponta, da identificação das fontes à apresentação.</li>
+                  <li>Extração, limpeza, padronização e integração de dados SQL, planilhas e sistemas corporativos.</li>
+                  <li>Criação de dashboards, KPIs e relatórios para desempenho, metas e resultados financeiros.</li>
+                  <li>Modelagem dimensional, medidas DAX, Power Query, SQL e automação de rotinas com Excel/VBA.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="job">
+              <div class="date">Abr 2021<br />Jan 2022</div>
+              <div>
+                <h3>Analista Fiscal</h3>
+                <p class="company">Gentil Negócios</p>
+                <ul>
+                  <li>Análise e apuração de tributos, escrituração, conciliação fiscal e obrigações acessórias.</li>
+                  <li>Suporte às áreas contábil, financeira e administrativa com foco em precisão e conformidade.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="job">
+              <div class="date">Mai 2020<br />Mar 2021</div>
+              <div>
+                <h3>Coordenador de Estoques</h3>
+                <p class="company">Gentil Negócios</p>
+                <ul>
+                  <li>Coordenação de inventários, movimentações, indicadores, equipes e melhorias logísticas.</li>
+                </ul>
+              </div>
+            </article>
+          </section>
+
+          <section>
+            <h2 class="section-title">Trajetória anterior</h2>
+            <div class="compact-jobs">
+              <div class="compact-job"><strong>Analista de Prevenção de Perdas</strong><span>Nordestão · 2013–2020</span></div>
+              <div class="compact-job"><strong>Estagiário</strong><span>Nordestão · 2013</span></div>
+              <div class="compact-job"><strong>Analista Administrativo</strong><span>Sam's Club · 2011–2012</span></div>
+              <div class="compact-job"><strong>Assistente Administrativo — Claims</strong><span>Sam's Club · 2009–2011</span></div>
+              <div class="compact-job"><strong>Operador de Caixa</strong><span>Sam's Club · 2009</span></div>
+              <div class="compact-job"><strong>Operador de Produção</strong><span>Alpargatas · 2006–2008</span></div>
+            </div>
+          </section>
+        </main>
+      </div>
+      <span class="page-number">CARLOS EUCLIDES · CURRÍCULO 2026</span>
+    </article>
+  </body>
+</html>
